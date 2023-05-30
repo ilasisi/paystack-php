@@ -1,0 +1,46 @@
+{
+    "name": "ilasisi/paystack-php",
+    "description": "This is a Paystack PHP SDK",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ibrahim Lasisi",
+            "email": "ilasisi90@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "sammyjo20/saloon": "^2.6.5",
+        "illuminate/collections": "^10.13"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.6.1",
+        "phpstan/phpstan": "^1.10.15",
+        "laravel/pint": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Paystack\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Paystack\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "pint": [
+            "./vendor/bin/pint"
+        ],
+        "test": [
+            "./vendor/bin/pest"
+        ]
+    },
+    "minimum-stability": "stable"
+}
