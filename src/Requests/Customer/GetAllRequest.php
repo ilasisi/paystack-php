@@ -12,7 +12,7 @@ class GetAllRequest extends Request
     protected Method $method = Method::GET;
 
     public function __construct(
-        protected ?mixed $queryParams,
+        protected mixed $queryParams,
     ) {
         //
     }

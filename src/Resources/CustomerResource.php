@@ -16,7 +16,7 @@ use Saloon\Contracts\Response;
 
 class CustomerResource extends Resource
 {
-    public function all(?mixed $queryParams = null): Response
+    public function all(mixed $queryParams = null): Response
     {
         return $this->connector->send(new GetAllRequest($queryParams));
     }
@@ -46,8 +46,8 @@ class CustomerResource extends Resource
         return $this->connector->send(new RiskActionRequest($attributes));
     }
 
-    public function deactivateAuthorization(string $deactivateAuthorization): Response
+    public function deactivateAuthorization(string $authorizationCode): Response
     {
-        return $this->connector->send(new DeactivateAuthorizationRequest($deactivateAuthorization));
+        return $this->connector->send(new DeactivateAuthorizationRequest($authorizationCode));
     }
 }
