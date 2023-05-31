@@ -1,11 +1,14 @@
 <?php
 
+use Paystack\Paystack;
 use Saloon\Contracts\Response;
 
 it('can whitelist customer', function () {
-    paystackInit()->withMockClient(mockClient());
+    $paystack = new Paystack('sk_test_16f20d');
 
-    $response = paystackInit()->customer()->riskAction(
+    $paystack->withMockClient(mockClient());
+
+    $response = $paystack->customer()->riskAction(
         attributes: [
             'customer' => 'email@email.com',
             'risk_action' => 'allow',
@@ -13,12 +16,15 @@ it('can whitelist customer', function () {
     );
 
     expect($response)->toBeInstanceOf(Response::class);
+    expect($response->json()['status'])->toBe(true);
 });
 
 it('can blacklist customer', function () {
-    paystackInit()->withMockClient(mockClient());
+    $paystack = new Paystack('sk_test_16f20d_key');
 
-    $response = paystackInit()->customer()->riskAction(
+    $paystack->withMockClient(mockClient());
+
+    $response = $paystack->customer()->riskAction(
         attributes: [
             'customer' => 'email@email.com',
             'risk_action' => 'deny',

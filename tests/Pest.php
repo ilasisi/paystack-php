@@ -16,8 +16,3 @@ function mockClient(): MockClient
         },
     ]);
 }
-
-function paystackInit()
-{
-    return new Paystack('test_secret_key');
-}

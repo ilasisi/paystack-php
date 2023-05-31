@@ -1,14 +1,18 @@
 <?php
 
+use Paystack\Paystack;
 use Saloon\Contracts\Response;
 
 it('can update customer', function () {
-    paystackInit()->withMockClient(mockClient());
+    $paystack = new Paystack('sk_test_16f20d');
 
-    $response = paystackInit()->customer()->update(
+    $paystack->withMockClient(mockClient());;
+
+    $response = $paystack->customer()->update(
         codeOrEmailOrID: 'email@email.com',
         attributes: []
     );
 
     expect($response)->toBeInstanceOf(Response::class);
+    expect($response->json()['status'])->toBe(true);
 });

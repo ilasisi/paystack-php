@@ -1,11 +1,15 @@
 <?php
 
+use Paystack\Paystack;
 use Saloon\Contracts\Response;
 
 it('can get single customer details', function () {
-    paystackInit()->withMockClient(mockClient());
+    $paystack = new Paystack('sk_test_16f20d');
 
-    $response = paystackInit()->customer()->get('hhjhhhh');
+    $paystack->withMockClient(mockClient());
+
+    $response = $paystack->customer()->get('CUS_m9');
 
     expect($response)->toBeInstanceOf(Response::class);
+    expect($response->json()['status'])->toBe(true);
 });

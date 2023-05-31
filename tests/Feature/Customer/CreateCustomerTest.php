@@ -1,13 +1,17 @@
 <?php
 
+use Paystack\Paystack;
 use Saloon\Contracts\Response;
 
 it('can create customer', function () {
-    paystackInit()->withMockClient(mockClient());
+    $paystack = new Paystack('sk_test_16f20d');
 
-    $response = paystackInit()->customer()->create(
+    $paystack->withMockClient(mockClient());
+
+    $response = $paystack->customer()->create(
         attributes: []
     );
 
     expect($response)->toBeInstanceOf(Response::class);
+    expect($response->json()['status'])->toBe(true);
 });
