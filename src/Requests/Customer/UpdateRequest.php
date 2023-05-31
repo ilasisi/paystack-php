@@ -18,7 +18,7 @@ class UpdateRequest extends Request implements HasBody
 
     public function __construct(
         protected int|string $codeOrEmailOrID,
-        protected array $attributes,
+        protected mixed $attributes,
     ) {
         //
     }
@@ -28,6 +28,7 @@ class UpdateRequest extends Request implements HasBody
         return "/customer/$this->codeOrEmailOrID";
     }
 
+    /** @return array<mixed> */
     protected function defaultBody(): array
     {
         return [

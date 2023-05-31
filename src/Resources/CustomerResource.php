@@ -16,7 +16,7 @@ use Saloon\Contracts\Response;
 
 class CustomerResource extends Resource
 {
-    public function all(?array $queryParams = null): Response
+    public function all(?mixed $queryParams = null): Response
     {
         return $this->connector->send(new GetAllRequest($queryParams));
     }
@@ -26,22 +26,22 @@ class CustomerResource extends Resource
         return $this->connector->send(new GetSingleRequest($codeOrEmailOrID));
     }
 
-    public function create(array $attributes): Response
+    public function create(mixed $attributes): Response
     {
         return $this->connector->send(new CreateRequest($attributes));
     }
 
-    public function update(string $codeOrEmailOrID, array $attributes): Response
+    public function update(string $codeOrEmailOrID, mixed $attributes): Response
     {
         return $this->connector->send(new UpdateRequest($codeOrEmailOrID, $attributes));
     }
 
-    public function validate(string $codeOrEmailOrID, array $attributes): Response
+    public function validate(string $codeOrEmailOrID, mixed $attributes): Response
     {
         return $this->connector->send(new ValidateRequest($codeOrEmailOrID, $attributes));
     }
 
-    public function riskAction(array $attributes): Response
+    public function riskAction(mixed $attributes): Response
     {
         return $this->connector->send(new RiskActionRequest($attributes));
     }

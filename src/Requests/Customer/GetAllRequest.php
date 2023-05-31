@@ -12,7 +12,7 @@ class GetAllRequest extends Request
     protected Method $method = Method::GET;
 
     public function __construct(
-        protected ?array $queryParams,
+        protected ?mixed $queryParams,
     ) {
         //
     }
@@ -22,6 +22,7 @@ class GetAllRequest extends Request
         return '/customer';
     }
 
+    /** @return array<mixed> */
     protected function defaultQuery(): array
     {
         return [

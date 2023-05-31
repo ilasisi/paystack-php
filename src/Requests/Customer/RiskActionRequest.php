@@ -16,7 +16,7 @@ class RiskActionRequest extends Request implements HasBody
     protected Method $method = Method::POST;
 
     public function __construct(
-        protected array $attributes,
+        protected mixed $attributes,
     ) {
         //
     }
@@ -26,6 +26,7 @@ class RiskActionRequest extends Request implements HasBody
         return '/customer/set_risk_action';
     }
 
+    /** @return array<mixed> */
     protected function defaultBody(): array
     {
         return [

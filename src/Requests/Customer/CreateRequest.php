@@ -17,7 +17,7 @@ class CreateRequest extends Request implements HasBody
     protected Method $method = Method::POST;
 
     public function __construct(
-        protected array $attributes,
+        protected mixed $attributes,
     ) {
         //
     }
@@ -27,6 +27,7 @@ class CreateRequest extends Request implements HasBody
         return '/customer';
     }
 
+    /** @return array<mixed> */
     protected function defaultBody(): array
     {
         return [

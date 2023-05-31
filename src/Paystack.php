@@ -11,6 +11,12 @@ use Saloon\Http\Connector;
 
 class Paystack extends Connector
 {
+    public function __construct(
+        protected string $paystackSecretKey,
+    ) {
+        //
+    }
+
     public function resolveBaseUrl(): string
     {
         return 'https://api.paystack.co';
@@ -26,7 +32,7 @@ class Paystack extends Connector
 
     protected function defaultAuth(): ?Authenticator
     {
-        return new TokenAuthenticator(env('PAYSTACK_SECRET_KEY'));
+        return new TokenAuthenticator($this->paystackSecretKey);
     }
 
     public function defaultConfig(): array

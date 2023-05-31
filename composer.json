@@ -40,6 +40,9 @@
         ],
         "test": [
             "./vendor/bin/pest"
+        ],
+        "stan": [
+            "./vendor/bin/phpstan analyse src"
         ]
     },
     "minimum-stability": "stable"

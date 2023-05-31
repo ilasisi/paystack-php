@@ -16,7 +16,7 @@ class DeactivateAuthorizationRequest extends Request implements HasBody
     protected Method $method = Method::POST;
 
     public function __construct(
-        protected string $authorization_code,
+        protected string $authorizationCode,
     ) {
         //
     }
@@ -26,10 +26,11 @@ class DeactivateAuthorizationRequest extends Request implements HasBody
         return '/customer/deactivate_authorization';
     }
 
+    /** @return array<mixed> */
     protected function defaultBody(): array
     {
         return [
-            'authorization_code' => $this->authorization_code,
+            'authorization_code' => $this->authorizationCode,
         ];
     }
 }
